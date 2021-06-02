@@ -1,0 +1,198 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+*{
+    list-style-type: none;
+    text-decoration: none;
+}
+.showcase-wrapper{
+    height: 90vh;
+    width: 100%;
+    background: url('../img/image (1).jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* align-content: center; */
+    justify-content: center;
+    justify-items: center;
+    
+}
+.showcase-wrapper .text{
+    margin-left: 3%;
+}
+.showcase-wrapper .text p{
+    opacity: 0;
+    font-size: 2rem;
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    
+}
+.showcase-wrapper .text a{
+    opacity: 0;
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0.1s;
+}
+@keyframes fadein{
+    0%{
+        position: relative;
+        margin-left: -50%;
+    }
+    100%{
+        opacity: 1;
+        margin-left: 0.5%;
+    }
+}
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.team{
+    padding-top: 30px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    /* justify-content: center; */
+    justify-items: center;
+    height: 100vh;   
+}
+.grid-container{
+    width: 98%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+}
+.videos{
+    padding-top: 30px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    /* justify-content: center; */
+    justify-items: center;
+    height: max-content;   
+}
+.video-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    /* justify-content: center; */
+    justify-items: center;
+    width: 90%;
+    height: 40vh;
+}
+.videos iframe{
+    width: 75%;
+    height: 400px;
+}
+.about{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    /* justify-content: center; */
+    justify-items: center;
+    height: max-content;     
+}
+.grid-container-min{
+    width: 48%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+}
+.grid-container-min div{
+    border-radius: 20px;
+    padding-top: 10px;
+}
+.about *{
+    text-align: center;
+}
+.about i{
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+}
+.about .paragraph{
+    width: 60%;
+}
+section {
+    padding-bottom: 30px;
+}
+footer{
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    height: 200px;
+    padding-bottom: 10px;
+}
+footer div{
+    
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    height: 100px;
+
+}
+footer i{
+    color: #fff;
+    font-size: 20px;
+}
+.logo .flex-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 30%;
+    grid-gap: 20px;
+}
+
+@media screen and (max-width:768px){
+    .team{
+        padding-top: 30px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        /* justify-content: center; */
+        justify-items: center;
+        height: max-content;   
+    }
+    .grid-container-min{
+        width: 98%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 10px;
+    }
+    footer .logo{
+        width: 50%;
+    }
+    footer h3{
+        font-size: 1rem;
+    }
+}
