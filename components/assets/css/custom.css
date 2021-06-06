@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 html{
     scroll-behavior: smooth;
@@ -107,7 +108,7 @@ html{
     height: 400px;
 }
 .about{
-    padding-top: 20px;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,16 +169,41 @@ footer i{
 }
 .logo .flex-container{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4,1fr);
     width: 30%;
     grid-gap: 20px;
 }
 
+
+/* ======================= POSTS PAGE ============================= */
+.posts .container-posts{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+}
+.post{
+    background-color: #c5c5c5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    padding-bottom: 10px;
+    width: 250px;
+    border-radius: 1px;
+}
+.post img{
+    border-radius: 1px 1px 0 0;
+    width: 250px;
+    height: 350px;
+}
 @media screen and (max-width:768px){
     .showcase-wrapper{
         height: 90vh;
         width: 100%;
-        background: url(../img/image2.jpg);
+        background: url(../img/dark.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         /* background-position: center; */
@@ -215,5 +241,36 @@ footer i{
     }
     footer h3{
         font-size: 1rem;
+    }
+    .posts{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        justify-items: center;   
+    }
+    .posts .container-posts{
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        place-items: center;
+    }
+    .post{
+        background-color: #c5c5c5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
+        padding-bottom: 10px;
+        width: 250px;
+        border-radius: 1px;
+    }
+    .post img{
+        border-radius: 1px 1px 0 0;
+        width: 250px;
+        height: 300px;
     }
 }

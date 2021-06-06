@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+.section{
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    width: 90%;
+}
+.flex-row{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+}
+.btn{
+    border-radius: 3px;
+}
+.box{
+    background-color: white;
+    width: 200px;
+    height: 150px;
+    margin: 20px;
+    border-radius: 10px;
+}
+@media screen and (max-width:768px) {
+    .section{
+        width: 90%;
+    }
+      .flex-row {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+      }
+}

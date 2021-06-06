@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+section{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    padding-bottom: 50px;
+}
+.post{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+} 
+.post img{
+    width: 60%;
+    height: 400px;
+}
+.post p{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+footer{
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    height: 200px;
+    padding-bottom: 10px;
+}
+footer div{
+    
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    height: 100px;
+
+}
+footer i{
+    color: #fff;
+    font-size: 20px;
+}
+.logo .flex-container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    width: 30%;
+    grid-gap: 20px;
+}
+@media screen and (max-width:768px){
+    .post{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+    } 
+    .post img{
+        width: 95%;
+    }
+    section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        padding-bottom: 50px;
+    }
+    footer .logo{
+        width: 70%;
+    }
+    footer h3{
+        font-size: 1rem;
+    }
+}
