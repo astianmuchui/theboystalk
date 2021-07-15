@@ -1,3 +1,14 @@
+<?php
+  if(isset($_POST['submit'])){
+    require './components/modules/database.php';
+    session_start();
+    $_SESSION['name'] = mysqli_real_escape_string($conn,$_POST['name']);
+    $_SESSION['email'] = mysqli_real_escape_string($conn,$_POST['email']);
+    $_SESSION['phone'] = mysqli_real_escape_string($conn,$_POST['phone']);
+    $_SESSION['message'] = mysqli_real_escape_string($conn,$_POST['message']);
+    header("Location: ./components/modules/send_message.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,16 +56,17 @@
       <main class="showcase-wrapper">
         <div class="text">
             <p class="text-white">A better world For Teens</p>
-            <a href="#" class="btn btn-light">Contact Us</a>
+            <a href="mailto:clevinmteja@gmail.com" class="btn btn-light">Contact Us</a>
         </div>
       </main>
       <section class="about" id="about">
-          
+          <br> <br> <br>
         <h2>About Us</h2>
-        <p class="paragraph">The boys talk is a teen movement built to solve major and common teen issues 
+        <p class="paragraph">The boys talk is a teen movement in kenya which is built to solve major and common teen issues 
             that are likely to bring negative effects if not solved  early enough <br>
-            At boys talk we beleive that it is within ourselves to make a change. Through our videos one 
-            can learn and relate with our great speakers who don't speak on mere observation but experience<br>
+            At boys talk we beleive that it is within ourselves to make a change. Through our videos and posts one 
+            can learn a lot and relate with our great speakers who don't speak on mere observation but experience<br>
+
             <blockquote> ~ Change the bit you can, we have more than teen life to live </blockquote>
         </p>
         <h2>What we cover</h2>
@@ -65,6 +77,12 @@
                 <div class="card-body">
                </div>
             </div>
+            <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+              <i class="fas fa-sad-tear"></i>
+              <div class="card-header">Rejection</div>
+              <div class="card-body">
+             </div>
+          </div>
             <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
                 <i class="fas fa-smoking"></i>
                 <div class="card-header">Drug abuse</div>
@@ -106,7 +124,7 @@
       <section class="contact-us jumbotron container">
           <br>
           <h3>Let's talk about it</h3>
-        <form action="#" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="name" id="" class="form-control" required>
@@ -134,10 +152,10 @@
             <h4 class="text-white">The boys talk ke &copy; 2021</h4>
             
             <div class="flex-container">
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/real_wokes" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/the_boys_talk_ke/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCOk-SFaEP91UDsKXY3lVypA" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://chat.whatsapp.com/K5YiPFLu031KfAOT80AUAv" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
             <small class="text-info">Powered by <a class="text-danger" href="http://api.whatsapp.com/send?phone=254797061691" style="text-decoration: none;">Seb Astian</a></small>
         </div>

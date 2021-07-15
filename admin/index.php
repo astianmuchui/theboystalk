@@ -1,5 +1,20 @@
 <?php
-  require '../components/modules/functions.php';
+  session_start();
+  if(isset($_GET['random_passkey'])){
+    
+    $id = $_GET['random_passkey'];
+    $psky = $_SESSION['passkey'];
+    if(($_GET['random_passkey'] == $_SESSION['passkey']) && ($id !== NULL) && (!empty($id))){
+      require '../components/modules/functions.php';      
+    }else{
+      header("Location: ./login.php");
+    }
+
+  }else{
+    header("Location: ./login.php");
+  }
+
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,20 +42,24 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="./action/make_post.php">New post</a>
+                <a class="nav-link active" href="./action/make_post.php?random_passkey=<?php echo $id; ?>">New post</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link active " href="#">Messages</a>
+                <a class="nav-link active " href="./action/my_posts.php?random_passkey=<?php echo $id; ?>">My posts</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link active" href="#"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a class="nav-link active " href="./action/messages.php?random_passkey=<?php echo $id; ?>">Messages</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link active" href="./logout.php?action=logout"> <i class="fas fa-sign-out-alt"></i> Logout</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
       
-      <section class="flex-column section" >
+      <section class="flex-column section">
+        <h6 class="text-info" >Welcome, Mwanzia</h6>
       <br>
       <h3 class="text-white">Website Overview</h3>
       <div class="flex-row">

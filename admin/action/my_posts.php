@@ -1,18 +1,12 @@
 <?php
-  require '../utility.php';
-  $output = "";
-        if(isset($_POST['create'])){
-          
-            require '../../components/modules/functions.php';
-            $title = $_POST['post_title'];
-            $content = $_POST['post_content'];
-            $author = $_POST['post_author'];
-            $image = $_FILES['image']['name'];
-            post($title,$image,$content,$author,$output);
-            
-        }
+    require '../utility.php';
+    require '../../components/modules/database.php';
+    $query = "SELECT * FROM blog ORDER BY id desc";
+    $result = mysqli_query($conn,$query);
+    $posts = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($conn);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../components/assets/css/bootstrap.min.css">
-    <title>Add post</title>
+    <title>My posts</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -54,34 +48,37 @@
         </div>
       </nav>
       <br>
-      <center> <?php echo $output; ?> </center>
-      
-      <section class="container">
-      <form action="./make_post.php?random_passkey=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Title of post</label>
-                <input type="text" name="post_title" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Image</label>
-                <input type="file" class="form-control" name="image" id="file">
-            </div>
-            <div class="form-group">
-                <label>Content</label>
-                <textarea name="post_content" id="" cols="20" rows="10" class="form-control"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Author</label>
-                <input type="text" name="post_author" id="" class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Post" name="create" class="form-control btn btn-primary">    
-            </div>
-            
-        </form>
-            <br>
-      </section>
 
+      <div class="container">
+  <table class="table table-hover">
+
+    
+  <thead>
+
+  <tr class="table-dark bg-primary">
+      <td>Title</td>
+      <td>Preview</td>
+      <td>author</td>
+      <td>Date</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach($posts as $message): ?>
+    <?php
+    ?>
+    <tr class="table-light">
+      <th scope="row"><?php echo $message['title']; ?></th>
+      <td> <?php echo substr($message['body'],0,30)."...." ?></td>
+      <td><?php echo $message['author'] ?></td>
+      <td><?php echo substr($message['date'],0,16) ?></td>
+      <td><a href="./edit_post.php?id=<?php echo $message['id'] ?>&&random_passkey=<?php echo $id;?>" class="btn btn-success"> <i class="fas fa-pencil-alt"></i> Edit</a> <a href="./delete.post.php?id=<?php echo $message['id']?>&&random_passkey=<?php echo $id ?>" class="btn bg-danger text-white"> <i class="fas fa-trash-alt text-white"></i> Delete</a> </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+
+  </div>
 
     <script src="../../components/assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../components/assets/js/font_awesome_main.js"></script>

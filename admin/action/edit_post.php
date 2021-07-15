@@ -1,16 +1,27 @@
 <?php
   require '../utility.php';
-  $output = "";
-        if(isset($_POST['create'])){
+    $output = "";
+  require '../../components/modules/database.php';
+  if(isset($_GET['id'])){
+        $url_id = $_GET['id'];
+        $query = "SELECT * FROM blog WHERE id = $url_id";
+        $result = mysqli_query($conn,$query); 
+        $post = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        mysqli_close($conn);
+
+        if(isset($_POST['recreate'])){
           
             require '../../components/modules/functions.php';
             $title = $_POST['post_title'];
             $content = $_POST['post_content'];
             $author = $_POST['post_author'];
             $image = $_FILES['image']['name'];
-            post($title,$image,$content,$author,$output);
+            repost($title,$image,$content,$author,$output);
             
         }
+            
+  }
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +31,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../components/assets/css/bootstrap.min.css">
-    <title>Add post</title>
+    <title>Edit post</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -54,28 +65,28 @@
         </div>
       </nav>
       <br>
-      <center> <?php echo $output; ?> </center>
-      
       <section class="container">
-      <form action="./make_post.php?random_passkey=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
+          <center><?php echo $output; ?></center>
+      <form action="./edit_post.php?id=<?php echo $post['id'] ?>&&random_passkey=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
+                
             <div class="form-group">
                 <label>Title of post</label>
-                <input type="text" name="post_title" class="form-control">
+                <input type="text" name="post_title" class="form-control" value="<?php echo $post['title'] ?>">
             </div>
             <div class="form-group">
-                <label>Image</label>
+                <label>Image (Re-Choose)</label>
                 <input type="file" class="form-control" name="image" id="file">
             </div>
             <div class="form-group">
-                <label>Content</label>
-                <textarea name="post_content" id="" cols="20" rows="10" class="form-control"></textarea>
+                <label>Content (Re-Write it all)</label>
+                <textarea name="post_content" id="" cols="20" rows="10" class="form-control" placeholder="<?php echo $post['body'] ?>"></textarea>
             </div>
             <div class="form-group">
                 <label>Author</label>
-                <input type="text" name="post_author" id="" class="form-control">
+                <input type="text" name="post_author" id="" class="form-control" value="<?php echo $post['author'] ?>">
             </div>
             <div class="form-group">
-                <input type="submit" value="Post" name="create" class="form-control btn btn-primary">    
+                <input type="submit" value="Post" name="recreate" class="form-control btn btn-primary">    
             </div>
             
         </form>
